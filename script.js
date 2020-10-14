@@ -6,8 +6,9 @@ document.getElementById("searchSubmit").addEventListener("click", function(event
   let value = document.getElementById("searchInput").value;
   let s = document.getElementById("selector");
   let option = s.options[s.selectedIndex].value;
-  if (value === "")
-    return;
+  if (value === "") {
+      return;
+  }
 
   var url = "https://cors-anywhere.herokuapp.com";
   if (option == "name") {
@@ -53,7 +54,7 @@ function addObjectToOutput(currObj) {
   output += '<img src="' + currObj.image.url + '">';
   output += '<div class="main-content">';
   output += '<h1>' + currObj.name + '</h1>';
-  output += '<h2>(id: ' + currObj.id + ')</h2>'
+  output += '<h2>(id: ' + currObj.id + ')</h2>';
   output += '<div class="sub-content">';
   output += '<h5>Biography</h5>';
   output += '<p>Full Name: ' + currObj.biography["full-name"] + '</p>';
