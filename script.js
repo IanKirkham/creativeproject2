@@ -12,20 +12,20 @@ document.getElementById("searchSubmit").addEventListener("click", function(event
   var url = "https://cors-anywhere.herokuapp.com";
   if (option == "name") {
     url += "/superheroapi.com/api/" + accesstoken + "/search/" + value;
-  }
-  else {
+  } else {
     url += "/superheroapi.com/api/" + accesstoken + "/" + value;
   }
 
-  fetch(url, {mode: 'cors'})
+  fetch(url, {
+      mode: 'cors'
+    })
     .then(function(response) {
       return response.json();
     }).then(function(json) {
 
       if (json.response == "error") {
         document.getElementById("error").textContent = "Error: " + json.error;
-      }
-      else {
+      } else {
         document.getElementById("error").textContent = "";
       }
 
@@ -33,41 +33,44 @@ document.getElementById("searchSubmit").addEventListener("click", function(event
 
       let output = "";
       if (json.results != undefined) {
+        output += '<h3>Results - (' + json.results.length + ')</h3>';
         for (let i = 0; i < json.results.length; i++) {
           output += addObjectToOutput(json.results[i]);
         }
       } else {
+        output += '<h3>Results - (1)</h3>';
         output += addObjectToOutput(json);
       }
 
       document.getElementById("heroData").innerHTML = output;
-      window.location="#heroData";
+      window.location = "#heroData";
     });
 });
 
 function addObjectToOutput(currObj) {
   let output = "";
   output += '<div class="object-container">';
-    output += '<img src="' + currObj.image.url + '">';
-    output += '<div class="main-content">';
-      output += '<h1>' + currObj.name + ' (ID: ' + currObj.id + ')</h1>';
-      output += '<div class="sub-content">';
-        output += '<h5>Biography</h5>';
-        output += '<p>Full Name: ' + currObj.biography["full-name"] + '</p>';
-        output += '<p>Place of Birth: ' + currObj.biography["place-of-birth"] + '</p>';
-        output += '<p>Publisher: ' + currObj.biography["publisher"] + '</p>';
-        output += '<h5>Appearance</h5>';
-        output += '<p>Gender: ' + currObj.appearance["gender"] + '</p>';
-        output += '<p>Eye Color: ' + currObj.appearance["eye-color"] + '</p>';
-        output += '<p>Hair Color: ' + currObj.appearance["hair-color"] + '</p>';
-        output += '<p>Height: ' + currObj.appearance.height[0] + '</p>';
-        output += '<p>Weight: ' + currObj.appearance.weight[0] + '</p>';
-        output += '<p>Race: ' + currObj.appearance["race"] + '</p>';
-        output += '<h5>Work</h5>';
-        output += '<p>Base: ' + currObj.work["base"] + '</p>';
-        output += '<p>Occupation: ' + currObj.work["occupation"] + '</p>';
-      output += '</div>';
-    output += '</div>';
+  output += '<img src="' + currObj.image.url + '">';
+  output += '<div class="main-content">';
+  output += '<h1>' + currObj.name + '</h1>';
+  output += '<h2>(id: ' + currObj.id + ')</h2>'
+  output += '<div class="sub-content">';
+  output += '<h5>Biography</h5>';
+  output += '<p>Full Name: ' + currObj.biography["full-name"] + '</p>';
+  output += '<p>Place of Birth: ' + currObj.biography["place-of-birth"] + '</p>';
+  output += '<p>Publisher: ' + currObj.biography["publisher"] + '</p>';
+  output += '<h5>Appearance</h5>';
+  output += '<p>Gender: ' + currObj.appearance["gender"] + '</p>';
+  output += '<p>Eye Color: ' + currObj.appearance["eye-color"] + '</p>';
+  output += '<p>Hair Color: ' + currObj.appearance["hair-color"] + '</p>';
+  output += '<p>Height: ' + currObj.appearance.height[0] + '</p>';
+  output += '<p>Weight: ' + currObj.appearance.weight[0] + '</p>';
+  output += '<p>Race: ' + currObj.appearance["race"] + '</p>';
+  output += '<h5>Work</h5>';
+  output += '<p>Base: ' + currObj.work["base"] + '</p>';
+  output += '<p>Occupation: ' + currObj.work["occupation"] + '</p>';
+  output += '</div>';
+  output += '</div>';
   output += '</div>';
   return output;
 }

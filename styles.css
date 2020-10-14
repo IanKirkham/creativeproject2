@@ -16,11 +16,11 @@ body {
 
 .container {
   margin-top: 1em;
+  margin-bottom: 2em;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid red;
   min-width: 100%;
 }
 
@@ -29,7 +29,6 @@ form {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  border: 1px solid green;
 }
 
 form p {
@@ -74,7 +73,6 @@ input[type=submit] {
 }
 
 .container img {
-  border: 1px solid blue;
   max-width: 40%;
 }
 
@@ -84,44 +82,84 @@ input[type=submit] {
 }
 
 #showIdsLink {
-  color: #f6db35;
+  color: #4c94f6;
   margin: 0;
   padding: 0;
 }
 
 #showIdsLink:hover {
   text-decoration: none;
-  color: #ffc510;
+  color: #b3b3b3;
 }
 
 #heroData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 4.3em;
+}
+
+#heroData h3 {
+  text-decoration: underline;
+  margin: 0.7em 0em;
 }
 
 .object-container {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid yellow;
+  border-style: outset;
+  border-width: 0.5em;
+  border-color: #535b70;
   justify-content: space-around;
+  min-width: 90%;
+  max-width: 90%;
+  margin-bottom: 2em;
 }
 
 .object-container img {
-  width: 40%;
+  max-width: 60%;
+  height: auto;
+  margin-top: 0.5em;
 }
 
 .main-content {
-  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 0em 1em;
+  width: 100%;
+}
+
+.main-content h1, h2 {
+  margin: 0;
+}
+
+.main-content h2 {
+  margin-bottom: 0.2em;
+  color: #b5b5b5;
 }
 
 .sub-content {
+  min-width: 100%;
+  max-width: 100%;
+  text-align: left;
+  padding: 0.5em 0em;
+}
 
+.sub-content p, h5 {
+  margin: 0;
+}
+
+.sub-content h5 {
+  margin-top: 0.5em;
+  font-weight: bold;
 }
 
 #idTable {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 1px solid red;
   margin-bottom: 4.3em;
 }
 
@@ -174,6 +212,18 @@ a:hover {
     flex-direction: row;
   }
 
+  .object-container img {
+    max-width: 50%;
+  }
+
+  .sub-content h5 {
+    font-size: 2em;
+  }
+
+  .sub-content p {
+    font-size: 1.5em;
+  }
+
   table {
     width: 30%;
     font-size: 1.3em;
@@ -188,6 +238,32 @@ a:hover {
   .container {
     flex-direction: row;
     min-width: 90%;
+  }
+
+  .object-container {
+    min-width: 80%;
+    max-width: 80%;
+  }
+
+  .object-container img {
+    max-width: 50%;
+  }
+
+  .main-content {
+    width: 50%;
+  }
+
+  .sub-content {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .sub-content h5 {
+    font-size: 2em;
+  }
+
+  .sub-content p {
+    font-size: 1.5em;
   }
 
   label {
@@ -208,7 +284,7 @@ a:hover {
 
   table {
     width: 30%;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   .footer a {
